@@ -8,7 +8,9 @@ import reportWebVitals from './reportWebVitals';
 
 import './index.scss';
 
-
+/**
+ * React App Entry Point
+ */
 ReactDOM.render(
   <React.StrictMode>
     <AppStoreContextProvider>

@@ -8,6 +8,9 @@ import SIgnUpPage from "../pages/Auth/SignUp";
 
 import DashboardPage from "../pages/Dashboard";
 
+/**
+ * IRoute interface for defining routes in the application
+ */
 interface IRoute {
 	path: string,
 	name: string,
@@ -15,6 +18,9 @@ interface IRoute {
 	Layout: React.FC
 }
 
+/**
+ * Routes array for defining routes in the application
+ */
 const routes: IRoute[] = [
 	{ path: "/auth/sign-in", name: "SIgnIn", Component: SIgnInPage, Layout: PublicLayout },
 	{ path: "/auth/sign-up", name: "SignUp", Component: SIgnUpPage, Layout: PublicLayout },

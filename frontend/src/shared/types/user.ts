@@ -1,8 +1,14 @@
+/**
+ * ISignUpUser is the type for the user object that is sent to the server
+ */
 export type ISignInUser = {
   email: string,
   password: string,
 }
 
+/**
+ * ICreateUser is the type for the user object that is sent to the server
+ */
 export type ICreateUser = {
   firstName: string,
   lastName: string,
@@ -10,6 +16,9 @@ export type ICreateUser = {
   password?: string,
 }
 
+/**
+ * IUser is the type for the user object that is returned from the server
+ */
 export type IUser = {
   _id: string,
   firstName: string,

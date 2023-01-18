@@ -22,6 +22,10 @@ import { CustomForm } from "../../../components/Common";
 import { createUser } from "../../../apis/user.api";
 import { ICreateUser } from "../../../shared/types";
 
+/**
+ * SignUp page
+ * @returns {JSX.Element}
+ */
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("first name is required."),
   lastName: Yup.string().required("last name is required."),
@@ -30,12 +34,21 @@ const validationSchema = Yup.object().shape({
 });
 
 const SIgnUpPage: React.FC = () => {
+  /**
+   * state to handle password visibility
+   */
   const [passwordVisible, setPasswordVisible] = useState(false);
 
+  /**
+   * function to handle form submission
+   */
   const togglePasswordVisible = () => {
     setPasswordVisible(!passwordVisible);
   };
-
+  /**
+   * function to be called when the form is submitted
+   * @param values
+   */
   const handleSubmit = (values: ICreateUser) => {
     createUser(values).then();
   }

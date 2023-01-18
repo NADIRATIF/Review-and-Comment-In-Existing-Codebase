@@ -11,16 +11,58 @@ import {UserDialog} from "../../components/UserDialog";
 import {getAll} from '../../apis/user.api';
 import {IUser} from "../../shared/types";
 
+/**
+ * Dashboard page component
+ * @constructor
+ * @return {JSX.Element}
+ */
 const Dashboard = () => {
+  /**
+   * Users state variable
+   * @type {[IUser[], Function]}
+   * @private
+   * @const
+   * @default []
+   * @property {IUser[]} users - Users
+   */
   const [users, setUsers] = useState<IUser[]>([]);
+
+  /**
+   * selected user state variable
+   * @type {[IUser | null, Function]}
+   * @private
+   * @const
+   * @default null
+   * @property {IUser | null} selectedUser - Selected user
+   */
   const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
+
+  /**
+   * dialog open state variable
+   * @type {[boolean, Function]}
+   * @private
+   * @const
+   * @default false
+   * @property {boolean} dialogOpen - Dialog open
+   */
   const [dialogOpen, setDialogOpen] = useState(false);
 
+  /**
+   * handle edit user click
+   * @param {IUser} user - User
+   * @private
+   * @const
+   */
   const handleEdit = (user: IUser) => {
     setSelectedUser(user);
     setDialogOpen(true);
   }
 
+  /**
+   * handle dialog close event
+   * @private
+   * @const
+   */
   const handleDialogClose = () => {
     setDialogOpen(false);
     getAll()
@@ -29,6 +71,9 @@ const Dashboard = () => {
       })
   }
 
+  /**
+   * use effect hook to fetch users
+   */
   useEffect(() => {
     getAll()
       .then(res => {

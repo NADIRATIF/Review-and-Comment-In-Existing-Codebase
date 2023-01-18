@@ -1,5 +1,7 @@
 import { styled } from "@mui/material";
 import { Form } from "formik";
 
-export const CustomForm = styled(Form)`
-`;
+/**
+ * CustomForm is a custom Form component
+ */
+export const CustomForm = styled(Form)``;

@@ -8,6 +8,10 @@ import {
 
 import {AppStoreContext} from "../../../contexts/AppStoreContext";
 
+/**
+ * Header component props interface
+ * @constructor
+ */
 const Header = () => {
   const {state} = useContext(AppStoreContext);
   const {user} = state;

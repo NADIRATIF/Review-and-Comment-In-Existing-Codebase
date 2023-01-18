@@ -24,21 +24,48 @@ import {signIn} from "../../../apis/user.api";
 import {AppStoreContext} from "../../../contexts/AppStoreContext";
 import {IContextActionType, ISignInUser} from "../../../shared/types";
 
+/**
+ * validation schema for formik form
+ */
 const validationSchema = Yup.object().shape({
   email: Yup.string().required("Email is required.").email('Invalid email'),
   password: Yup.string().required("Password is required.").min(5)
 });
 
+/**
+ * SignIn page component for sign in page
+ * @constructor
+ */
 const SIgnInPage: React.FC = () => {
+  /**
+   * Navigate hook for redirecting to other pages
+   */
   const navigate = useNavigate();
+
+  /**
+   * app store context
+   */
   const [passwordVisible, setPasswordVisible] = useState(false);
 
+  /**
+   * dispatch function for app store context reducer
+   * function to update state
+   */
   const { dispatch } = useContext(AppStoreContext);
 
+  /**
+   * toggle password visibility handler function for
+   * password field in form
+   */
   const togglePasswordVisible = () => {
     setPasswordVisible(!passwordVisible);
   };
 
+  /**
+   * handleSubmit function to be called when the form
+   * is submitted
+   * @param values
+   */
   const handleSubmit = (values: ISignInUser) => {
     signIn(values).then(res => {
       localStorage.setItem('token', res.token);

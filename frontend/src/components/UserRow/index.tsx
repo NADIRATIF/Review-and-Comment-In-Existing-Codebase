@@ -13,21 +13,36 @@ import {deleteUser} from "../../apis/user.api";
 import {IUser} from "../../shared/types";
 import "./style.scss";
 
+/**
+ * UserRowProps is the type of the props
+ */
 type UserItemProps = {
   user: IUser,
   onEditClick: (user: IUser) => void,
 }
 
+/**
+ * UserRow component is used to display user details
+ * @param user
+ * @param onEditClick
+ * @constructor
+ */
 export const UserRow: FC<UserItemProps> = (
   {
     user,
     onEditClick,
   }) => {
 
+  /**
+   * Handle Edit button click
+   */
   const handleEdit = () => {
     onEditClick(user);
   }
 
+  /**
+   * Handle Delete button click
+   */
   const handleDelete = () => {
     const confirmed = window.confirm("Do you really delete this user?");
     if (confirmed) {
